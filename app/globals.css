@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-navy: #1E3A8A;
+  --color-royal: #2563EB;
+  --color-slate: #64748B;
+  --color-sky: #0EA5E9;
+  --color-soft-bg: #F8FAFC;
+  --color-white: #FFFFFF;
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  color-scheme: light;
+  --background: #FFFFFF;
+  --foreground: #1E3A8A;
+  --card: #FFFFFF;
+  --card-foreground: #1E3A8A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1E3A8A;
+  --primary: #1E3A8A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F8FAFC;
+  --secondary-foreground: #64748B;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #2563EB;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #2563EB;
+  --radius: 0.75rem;
+
+  --navy: #1E3A8A;
+  --blue: #2563EB;
+  --slate: #64748B;
+  --sky: #0EA5E9;
+  --soft-white: #F8FAFC;
+  --white: #FFFFFF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html, body, #root, #__next {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    background-color: #FFFFFF;
+    color: #1E3A8A;
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: #FFFFFF;
+    color: #1E3A8A;
+    overflow-x: hidden;
+  }
+
+  /* Custom clean light scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F8FAFC;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+    border: 2px solid #F8FAFC;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2563EB;
+  }
+}
+
+@layer utilities {
+  .glass-light {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 20px -2px rgba(30, 58, 138, 0.04);
+  }
+
+  .card-executive {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 10px 30px -5px rgba(30, 58, 138, 0.04);
+  }
+
+  .grid-bg-light {
+    background-image:
+      linear-gradient(to right, rgba(30, 58, 138, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(30, 58, 138, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
