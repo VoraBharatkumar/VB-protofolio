@@ -8,9 +8,9 @@ import { Testimonials } from '@/components/testimonials'
 import { Contact } from '@/components/contact'
 import { Footer } from '@/components/footer'
 
-export default function Page() {
+export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#FFFFFF] text-[#1E3A8A]">
+    <main className="relative">
       <Navbar />
       <Hero />
       <About />

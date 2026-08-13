@@ -1,79 +1,121 @@
 'use client'
 
+import { motion } from 'motion/react'
 import { Reveal } from './reveal'
 import {
   Code2,
   Palette,
   Cpu,
-  ShieldCheck,
-  Database,
-  Globe,
+  Server,
 } from 'lucide-react'
 
-const groups = [
+const capabilities = [
   {
     icon: Code2,
     title: 'Full-Stack MERN Development',
-    skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Authentication & Authorization'],
+    subtitle: 'Complete Web Solutions',
+    description: 'React, Node, Express, MongoDB, REST APIs & Authentication',
+    color: 'from-blue-500 to-indigo-600',
+    skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Authentication'],
   },
   {
     icon: Cpu,
     title: 'Strategic Tech Leadership',
-    skills: ['Fractional CTO Advisory', 'Tech Stack Modernization', 'Engineering Governance', 'Team Mentorship'],
+    subtitle: 'Fractional CTO Services',
+    description: 'CTO Advisory, Tech Modernization, Engineering Governance, Team Mentorship',
+    color: 'from-purple-500 to-pink-600',
+    skills: ['CTO Advisory', 'Tech Modernization', 'Engineering Governance', 'Team Mentorship'],
   },
   {
     icon: Palette,
     title: 'Enterprise Design Systems',
-    skills: ['Figma Design Tokens', 'Headless Component Libraries', 'WCAG AAA Accessibility', 'Design Ops'],
+    subtitle: 'Scalable UI Architecture',
+    description: 'Figma Tokens, Component Libraries, WCAG AAA, Design Ops',
+    color: 'from-emerald-500 to-teal-600',
+    skills: ['Figma Tokens', 'Component Libraries', 'WCAG AAA', 'Design Ops'],
   },
   {
-    icon: Database,
+    icon: Server,
     title: 'Data Architecture & Infrastructure',
-    skills: ['Edge Computing', 'GraphQL / tRPC', 'PostgreSQL & Redis', 'Serverless APIs'],
-  },
-  {
-    icon: Globe,
-    title: 'Intelligent Systems & AI',
-    skills: ['LLM Streaming UI', 'Real-Time Telemetry', 'AI Command Palettes', 'Predictive Dashboards'],
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Security & Performance SLA',
-    skills: ['Core Web Vitals Optimization', 'Sub-100ms Response Times', 'OWASP Compliance', 'SOC2 Readiness'],
+    subtitle: 'Robust Backend Systems',
+    description: 'Edge Computing, GraphQL, PostgreSQL, Redis, Serverless APIs',
+    color: 'from-orange-500 to-red-600',
+    skills: ['Edge Computing', 'GraphQL', 'PostgreSQL', 'Redis', 'Serverless APIs'],
   },
 ]
 
 export function Skills() {
   return (
-    <section id="skills" className="relative px-6 md:px-12 lg:px-20 py-20 sm:py-28 lg:py-32 bg-white border-t border-[#E2E8F0]">
-      <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16">
+    <section id="skills" className="relative px-6 md:px-12 lg:px-20 py-10 sm:py-16 lg:py-20 bg-white border-t border-[#E2E8F0]">
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 right-0 h-96 w-96 translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/5 blur-[100px]" />
+      </div>
+
+      <div className="relative mx-auto max-w-5xl text-center mb-8 sm:mb-10">
         <h2 className="text-balance font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#1E3A8A] leading-tight">
           Enterprise capabilities engineered for{' '}
           <span className="text-[#2563EB]">high-stakes scale</span>
         </h2>
-        <p className="mt-3.5 text-pretty text-sm sm:text-base leading-relaxed text-[#64748B] font-normal">
-          A comprehensive technical suite tailored for mission-critical software, enterprise web platforms, and boardroom-level digital transformations.
-        </p>
       </div>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {groups.map((g, i) => (
-          <Reveal key={g.title} delay={(i % 3) * 0.06}>
-            <div className="group relative h-full overflow-hidden rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] p-6 shadow-xs transition-all duration-300 hover:border-[#2563EB]/40 hover:bg-white hover:shadow-md">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#1E3A8A] border border-[#E2E8F0] transition-colors group-hover:bg-[#1E3A8A] group-hover:text-white">
-                <g.icon className="h-5 w-5" />
+
+      {/* 4 Enterprise Capability Cards - 2x2 Grid */}
+      <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 max-w-5xl mx-auto">
+        {capabilities.map((cap, i) => (
+          <Reveal key={cap.title} delay={i * 0.15}>
+              <motion.div
+                className="group relative h-full overflow-hidden rounded-2xl bg-white border border-slate-200 p-6 shadow-sm transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/15"
+                whileHover={{ y: -4, scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+              {/* Animated gradient background */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: `linear-gradient(135deg, ${cap.color === 'from-blue-500 to-indigo-600' ? '#3b82f620' : cap.color === 'from-purple-500 to-pink-600' ? '#a855f720' : cap.color === 'from-emerald-500 to-teal-600' ? '#10b98120' : '#f9737220'})`,
+                }}
+              />
+
+              {/* Icon with gradient */}
+              <motion.div
+                className={`relative z-10 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-gradient-to-br ${cap.color} text-white shadow-lg mb-4`}
+                whileHover={{ rotate: 360, scale: 1.1 }}
+                transition={{ duration: 0.7, type: 'spring' }}
+              >
+                <cap.icon className="h-6 w-6 sm:h-7 sm:w-7" />
+              </motion.div>
+
+              <div className="relative z-10">
+                <h3 className="font-display text-base sm:text-lg font-bold text-slate-900 tracking-tight">
+                  {cap.title}
+                </h3>
+                <div className="mt-1.5 text-xs sm:text-sm font-semibold text-indigo-600 uppercase tracking-wider">
+                  {cap.subtitle}
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  {cap.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {cap.skills.map((skill) => (
+                    <motion.span
+                      key={skill}
+                      className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors group-hover:border-indigo-300 group-hover:text-indigo-700"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
               </div>
-              <h3 className="mt-4 font-display text-base font-bold text-[#1E3A8A] tracking-tight">{g.title}</h3>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {g.skills.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-lg border border-[#E2E8F0] bg-white px-2.5 py-1 text-xs font-semibold text-[#64748B] transition-colors group-hover:border-[#2563EB]/20 group-hover:text-[#1E3A8A]"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
+
+              {/* Bottom accent line */}
+              <motion.div
+                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-indigo-600 to-purple-600"
+                initial={{ width: 0 }}
+                whileHover={{ width: '100%' }}
+                transition={{ duration: 0.4 }}
+              />
+            </motion.div>
           </Reveal>
         ))}
       </div>

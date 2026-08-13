@@ -1,8 +1,9 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { ArrowUpRight, ShieldCheck, TrendingUp, Award, CheckCircle2 } from 'lucide-react'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { ArrowUpRight } from 'lucide-react'
+import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiExpress, SiMongodb, SiTailwindcss } from 'react-icons/si'
+import { CodeShowcase } from '@/components/CodeShowcase'
 
 const container = {
   hidden: {},
@@ -21,164 +22,195 @@ const item = {
 }
 
 const stats = [
-  { value: '$450M+', label: 'Enterprise Value Created', note: 'Proven ROI across fintech & SaaS' },
-  { value: '99.99%', label: 'Reliability SLA', note: 'Bank-grade production systems' },
-  { value: '90+', label: 'Products Delivered', note: 'Zero-downtime architecture' },
+  { value: '3+ Yrs', label: 'Full-Stack Experience' },
+  { value: '40+', label: 'Projects Shipped' },
+  { value: '100%', label: 'TypeScript Coverage' },
+]
+
+const stack = [
+  { icon: SiReact, label: 'React' },
+  { icon: SiNextdotjs, label: 'Next.js' },
+  { icon: SiTypescript, label: 'TypeScript' },
+  { icon: SiNodedotjs, label: 'Node.js' },
+  { icon: SiExpress, label: 'Express' },
+  { icon: SiMongodb, label: 'MongoDB' },
+  { icon: SiTailwindcss, label: 'Tailwind CSS' },
 ]
 
 export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[90vh] items-center overflow-hidden px-6 md:px-12 lg:px-20 pt-28 sm:pt-36 pb-16 sm:pb-24 bg-white"
+      className="relative flex min-h-[90vh] items-center overflow-hidden bg-slate-50 px-6 md:px-12 lg:px-20 pt-16 sm:pt-28 pb-10 sm:pb-20"
     >
-      {/* Soft background grid lines */}
-      <div className="pointer-events-none absolute inset-0 grid-bg-light opacity-50" />
+      {/* Animated floating orbs background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          className="absolute -left-32 -top-32 h-[26rem] w-[26rem] rounded-full bg-indigo-400/10 blur-[110px]"
+        />
+        <motion.div
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 60, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-emerald-300/15 blur-[110px]"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute left-1/2 top-1/3 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-400/10 blur-[100px]"
+        />
+      </div>
+
+      {/* Faint blueprint dot-grid, feathered toward the edges */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #CBD5E1 1px, transparent 1px)',
+          backgroundSize: '26px 26px',
+          maskImage: 'radial-gradient(ellipse 65% 65% at 50% 0%, black 30%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 65% 65% at 50% 0%, black 30%, transparent 100%)',
+          opacity: 0.6,
+        }}
+      />
 
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative grid w-full items-center gap-10 lg:gap-12 lg:grid-cols-12"
+        className="relative z-10 grid w-full items-center gap-12 lg:grid-cols-12 lg:gap-16"
       >
         <div className="lg:col-span-7">
-          <motion.div variants={item} className="flex flex-wrap items-center gap-2.5">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] px-3.5 py-1.5 text-xs font-bold text-[#64748B] shadow-xs">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0EA5E9] opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#0EA5E9]" />
+          <motion.div variants={item}>
+            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-sm animate-pulse">
+              <span className="relative flex  h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex  h-2 w-2 rounded-full bg-emerald-500" />
               </span>
-              Available for Strategic Advisory &amp; Consultations — Q3/Q4 2026
+              Available for full-stack roles & freelance — 2026
             </span>
           </motion.div>
 
           <motion.h1
             variants={item}
-            className="mt-5 text-balance font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1E3A8A] leading-[1.12]"
+            className="mt-6 text-balance font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight text-slate-900 leading-[1.1]"
           >
-            Engineering dynamic, data-driven web platforms for{' '}
-            <span className="text-[#2563EB]">global leaders</span>.
+            <span className="inline-block">Frontend.</span>{' '}
+            <span className="inline-block">Backend.</span>{' '}
+            <span className="inline-block">Database.</span>
+            <br />
+            <motion.span
+              className="inline-block text-indigo-600"
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              style={{
+                backgroundImage: 'linear-gradient(90deg, #4F46E5, #7C3AED, #4F46E5)',
+                backgroundSize: '200% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              One system, end to end.
+            </motion.span>
           </motion.h1>
 
           <motion.p
             variants={item}
-            className="mt-5 max-w-xl text-pretty text-sm sm:text-base leading-relaxed text-[#64748B] font-normal"
+            className="mt-6 max-w-xl text-pretty text-base sm:text-lg leading-relaxed text-slate-600"
           >
-            I'm <strong className="text-[#1E3A8A] font-bold">Vora Bharat</strong> — Senior Executive Technical Advisor & Full Stack Developer.
-            I build MERN-stack applications with real-time data, secure authentication, REST APIs, and responsive dynamic UIs for enterprise teams and venture-backed founders.
+            I'm <strong className="text-slate-900 font-semibold">Vora Bharat</strong>, a Full-Stack Developer
+            building production-ready apps with the MERN stack and Next.js — designing the data model, wiring
+            the API, and shipping the UI, type-safe from database to deploy.
           </motion.p>
 
-          <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3.5">
+          <motion.div variants={item} className="mt-6 flex flex-wrap items-center gap-4">
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 rounded-xl bg-[#2563EB] px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-[#1D4ED8] hover:shadow-md"
+              className="group inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all duration-200 hover:bg-indigo-700 hover:shadow-indigo-600/35 hover:scale-105"
             >
-              Explore Executive Portfolio
+              View Projects
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] px-5 py-3 text-xs sm:text-sm font-bold text-[#1E3A8A] transition-all duration-200 hover:bg-[#F1F5F9]"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 hover:scale-105"
             >
-              Initiate Dialogue
+              Let's Connect
             </a>
           </motion.div>
 
-          <motion.div variants={item} className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-[#E2E8F0] pt-6">
+          {/* Core stack — real tech, not decoration */}
+          <motion.div variants={item} className="mt-8 flex flex-wrap gap-2">
+            {stack.map(({ icon: Icon, label }) => (
+              <motion.span
+                key={label}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 cursor-default"
+              >
+                <Icon className="h-3.5 w-3.5" />
+                {label}
+              </motion.span>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={item}
+            className="mt-10 grid grid-cols-3 gap-6 border-t border-slate-200 pt-6 max-w-md"
+          >
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col">
-                <div className="font-display text-2xl sm:text-3xl font-extrabold text-[#1E3A8A] tracking-tight">
+                <motion.div
+                  className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                >
                   {s.value}
-                </div>
-                <div className="mt-0.5 text-xs font-bold uppercase tracking-wider text-[#64748B]">
+                </motion.div>
+                <div className="mt-1 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">
                   {s.label}
-                </div>
-                <div className="mt-0.5 text-[11px] text-[#64748B]/80 font-medium">
-                  {s.note}
                 </div>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Executive architecture dashboard showcase */}
+        {/* Signature visual: the live full-stack code showcase */}
         <div className="lg:col-span-5">
-          <motion.div variants={item} className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <div className="rounded-2xl bg-white border border-[#E2E8F0] p-6 sm:p-7 shadow-md shadow-[#1E3A8A]/5">
-              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#1E3A8A] font-display text-base font-extrabold text-white shadow-xs">
-                    VB
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-[#1E3A8A] flex items-center gap-1">
-                      Vora Bharat
-                      <ShieldCheck className="h-4 w-4 text-[#0EA5E9]" />
-                    </div>
-                    <div className="text-xs text-[#64748B] font-medium">Web Developer MERN</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 rounded-full bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 px-2.5 py-1 text-[11px] font-bold text-[#0EA5E9]">
-                  <Award className="h-3.5 w-3.5" />
-                  Top 1% Architect
-                </div>
-              </div>
-
-              <div className="mt-5 space-y-3.5">
-                <div className="text-xs font-bold uppercase tracking-wider text-[#64748B]">
-                  Core Architecture Performance
-                </div>
-
-                {[
-                  { title: 'Enterprise Web Architecture', score: '99.8%', desc: 'Next.js App Router & Micro-Frontends' },
-                  { title: 'Design System Governance', score: '98.5%', desc: 'Tokenized component architecture' },
-                  { title: 'Security & SLA Compliance', score: '100%', desc: 'SOC2 & Bank-grade standards' },
-                ].map((t, i) => (
-                  <div key={t.title} className="rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] p-3">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-[#1E3A8A] flex items-center gap-1.5">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-[#2563EB]" />
-                        {t.title}
-                      </span>
-                      <span className="font-mono text-[#2563EB] font-extrabold">{t.score}</span>
-                    </div>
-                    <div className="mt-1 text-[11px] text-[#64748B] pl-5 font-medium">
-                      {t.desc}
-                    </div>
-                    <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#E2E8F0]">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: t.score }}
-                        transition={{ duration: 1, delay: 0.4 + i * 0.15 }}
-                        className="h-full rounded-full bg-[#2563EB]"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-5 flex items-center justify-between border-t border-[#E2E8F0] pt-4 text-xs text-[#64748B]">
-                <div className="flex items-center gap-1.5 font-medium">
-                  <TrendingUp className="h-4 w-4 text-[#0EA5E9]" />
-                  <span>Verified Retention: <strong className="text-[#1E3A8A]">99.4%</strong></span>
-                </div>
-                <div className="flex gap-2">
-                  <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub" className="text-[#64748B] hover:text-[#1E3A8A] transition-colors">
-                    <FaGithub className="h-4 w-4" />
-                  </a>
-                 
-                  <a
-  href="https://www.linkedin.com/in/bharat-vora/"
-  target="_blank"
-  rel="noreferrer"
-  aria-label="LinkedIn"
-  className="text-[#64748B] hover:text-[#1E3A8A] transition-colors"
->
-  <FaLinkedin className="h-4 w-4" />
-</a>
-                </div>
-              </div>
-            </div>
+          <motion.div
+            variants={item}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <CodeShowcase />
           </motion.div>
         </div>
       </motion.div>

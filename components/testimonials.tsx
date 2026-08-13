@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'motion/react'
 import { Reveal } from './reveal'
 import { Quote, Star, Building2 } from 'lucide-react'
 
@@ -32,8 +33,13 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="relative px-6 md:px-12 lg:px-20 py-20 sm:py-28 lg:py-32 bg-[#F8FAFC] border-t border-[#E2E8F0]">
-      <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16">
+    <section id="testimonials" className="relative px-6 md:px-12 lg:px-20 py-20 sm:py-28 lg:py-32 bg-[#F8FAFC] border-t border-[#E2E8F0]">
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500/5 blur-[100px]" />
+      </div>
+
+      <div className="relative mx-auto max-w-3xl text-center mb-12 sm:mb-16">
         <h2 className="text-balance font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#1E3A8A] leading-tight">
           Trusted by leaders who{' '}
           <span className="text-[#2563EB]">demand excellence</span>
@@ -45,24 +51,56 @@ export function Testimonials() {
       <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
         {testimonials.map((t, i) => (
           <Reveal key={t.name} delay={i * 0.08}>
-            <figure className="flex h-full flex-col rounded-2xl bg-white border border-[#E2E8F0] p-6 sm:p-7 shadow-xs transition-all duration-300 hover:border-[#2563EB]/40 hover:shadow-md">
+            <motion.figure 
+              className="flex h-full flex-col rounded-2xl bg-white border border-[#E2E8F0] p-6 sm:p-7 shadow-xs transition-all duration-300 hover:border-[#2563EB]/40 hover:shadow-xl"
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 400 }}
+            >
               <div className="flex items-center justify-between">
-                <Quote className="h-7 w-7 text-[#2563EB]" />
-                <div className="flex gap-0.5">
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Quote className="h-7 w-7 text-[#2563EB]" />
+                </motion.div>
+                <motion.div 
+                  className="flex gap-0.5"
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                >
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} className="h-3.5 w-3.5 fill-[#0EA5E9] text-[#0EA5E9]" />
+                    <motion.div
+                      key={s}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 + s * 0.05 }}
+                    >
+                      <Star className="h-3.5 w-3.5 fill-[#0EA5E9] text-[#0EA5E9]" />
+                    </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </div>
 
-              <blockquote className="mt-5 flex-1 text-xs sm:text-sm leading-relaxed text-[#64748B] font-normal">
+              <motion.blockquote 
+                className="mt-5 flex-1 text-xs sm:text-sm leading-relaxed text-[#64748B] font-normal"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
                 &ldquo;{t.quote}&rdquo;
-              </blockquote>
+              </motion.blockquote>
 
               <figcaption className="mt-6 flex items-center gap-3 border-t border-[#E2E8F0] pt-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1E3A8A] font-display text-xs font-bold text-white shadow-xs">
+                <motion.div 
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1E3A8A] font-display text-xs font-bold text-white shadow-xs"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                >
                   {t.initials}
-                </div>
+                </motion.div>
                 <div>
                   <div className="text-xs sm:text-sm font-bold text-[#1E3A8A]">{t.name}</div>
                   <div className="text-xs font-bold text-[#2563EB]">{t.role}</div>
@@ -72,7 +110,7 @@ export function Testimonials() {
                   </div>
                 </div>
               </figcaption>
-            </figure>
+            </motion.figure>
           </Reveal>
         ))}
       </div>
