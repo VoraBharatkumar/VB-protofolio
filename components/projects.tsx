@@ -30,6 +30,7 @@ const projects: Project[] = [
       '/projects/project2/image2-5.png',
     ],
     github: 'https://github.com/VoraBharatkumar/Beauty_Pro',
+    demo: 'https://beauty-pro-woad.vercel.app/',
   },
   {
     name: 'Task-Manager',

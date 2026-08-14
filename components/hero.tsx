@@ -204,7 +204,7 @@ export function Hero() {
         </div>
 
         {/* Signature visual: the live full-stack code showcase */}
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 lg:-mt-16">
           <motion.div
             variants={item}
             whileHover={{ scale: 1.02 }}
