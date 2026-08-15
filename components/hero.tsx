@@ -41,7 +41,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[90vh] items-center overflow-hidden bg-slate-50 px-4 sm:px-6 md:px-12 lg:px-20 pt-16 sm:pt-28 pb-10 sm:pb-20"
+      className="relative flex min-h-[90vh] items-center overflow-hidden bg-slate-50 px-4 sm:px-6 md:px-12 lg:px-20 pt-24 sm:pt-28 pb-10 sm:pb-20"
     >
       {/* Animated floating orbs background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
