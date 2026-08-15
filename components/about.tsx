@@ -63,23 +63,23 @@ interface Milestone {
 
 const milestones: Milestone[] = [
   {
-    year: '2021',
+    year: '2023',
     title: 'Started Web Development Journey',
     description: 'Began learning HTML, CSS, and JavaScript. Built my first static websites and discovered passion for creating digital experiences.',
   },
   {
-    year: '2022',
+    year: '2024',
     title: 'First MERN Stack Project',
     description: 'Developed full-stack applications with MongoDB, Express, React, and Node.js. Mastered REST APIs and database integration.',
   },
   {
-    year: '2023',
+    year: '2025',
     title: 'Professional Freelance Work',
     description: 'Started taking on client projects, delivering production-ready applications with authentication, real-time features, and responsive UIs.',
   },
   {
-    year: '2024',
-    title: 'Next.js + TypeScript Focus',
+    year: '2026',
+    title: 'Next.js + TypeScript Focus[Fullstack]',
     description: 'Specialized in Next.js App Router, TypeScript, and enterprise-grade architecture. Building type-safe, scalable full-stack systems.',
     isActive: true,
   },
