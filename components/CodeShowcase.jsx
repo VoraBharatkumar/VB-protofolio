@@ -1,5 +1,3 @@
-
-
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -412,7 +410,7 @@ export function CodeShowcase() {
   }
 
   return (
-    <div className="relative mx-auto w-full max-w-md pb-8 lg:max-w-none">
+    <div className="relative mx-auto w-full max-w-md pb-8 lg:max-w-none min-w-0">
 
       {/* Box selector */}
       <div className="mb-3 flex items-center justify-center gap-2">
@@ -420,7 +418,7 @@ export function CodeShowcase() {
           <button
             key={b.id}
             onClick={() => handleBoxClick(i)}
-            className={`relative rounded-lg px-4 py-1.5 font-mono text-[11px] font-semibold transition-all ${
+            className={`relative rounded-lg px-3 sm:px-4 py-1.5 font-mono text-[11px] font-semibold transition-all whitespace-nowrap ${
               i === boxIndex
                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
                 : 'border border-slate-200 bg-white text-slate-500 hover:border-indigo-300 hover:text-indigo-600'
@@ -432,7 +430,7 @@ export function CodeShowcase() {
       </div>
 
       <div
-        className="relative"
+        className="relative w-full min-w-0"
         style={{ perspective: 1200 }}
       >
         <AnimatePresence mode="wait">
@@ -457,29 +455,29 @@ export function CodeShowcase() {
             style={{
               transformStyle: 'preserve-3d',
             }}
-            className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_80px_-30px_rgba(79,70,229,0.35)]"
+            className="w-full min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_80px_-30px_rgba(79,70,229,0.35)]"
           >
 
             {/* Title bar */}
-            <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/70 px-4 py-3">
-              <div className="flex items-center gap-1.5">
+            <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50/70 px-3 sm:px-4 py-3">
+              <div className="flex items-center gap-1.5 shrink-0">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
               </div>
 
-              <span className="font-mono text-[11px] text-slate-400">
+              <span className="font-mono text-[10px] sm:text-[11px] text-slate-400 truncate ml-2">
                 full-stack.dev
               </span>
             </div>
 
             {/* Tabs */}
-            <div className="flex items-center gap-1 overflow-x-auto border-b border-slate-100 bg-white px-3 pt-2">
+            <div className="flex items-center gap-1 overflow-x-auto border-b border-slate-100 bg-white px-2 sm:px-3 pt-2">
               {box.snippets.map((s, i) => (
                 <button
                   key={s.id}
                   onClick={() => handleTabClick(i)}
-                  className={`relative whitespace-nowrap px-3 py-2 font-mono text-[12px] transition-colors ${
+                  className={`relative whitespace-nowrap px-2 sm:px-3 py-2 font-mono text-[11px] sm:text-[12px] transition-colors ${
                     i === activeTab
                       ? 'text-indigo-600'
                       : 'text-slate-400 hover:text-slate-600'
@@ -498,10 +496,9 @@ export function CodeShowcase() {
             </div>
 
             {/* Code area */}
-            <div className="flex h-[300px] gap-4 overflow-y-auto bg-white px-4 py-4 sm:h-[320px]">
-
+            <div className="flex h-[280px] sm:h-[300px] lg:h-[320px] gap-3 sm:gap-4 overflow-y-auto overflow-x-auto bg-white px-3 sm:px-4 py-4 min-w-0">
               {/* Line numbers */}
-              <div className="select-none font-mono text-[12.5px] leading-[1.65] text-slate-300">
+              <div className="select-none font-mono text-[11px] sm:text-[12.5px] leading-[1.65] text-slate-300 shrink-0">
                 {snippet.lines.map((_, i) => (
                   <div key={i}>
                     {i + 1}
@@ -513,7 +510,7 @@ export function CodeShowcase() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`${box.id}-${snippet.id}`}
-                  className="font-mono text-[12.5px] leading-[1.65]"
+                  className="font-mono text-[11px] sm:text-[12.5px] leading-[1.65] min-w-0"
                 >
                   {snippet.lines.map((line, i) => (
                     <motion.div
@@ -541,7 +538,7 @@ export function CodeShowcase() {
             </div>
 
             {/* Status bar */}
-            <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/70 px-4 py-2.5">
+            <div className="flex items-center justify-between gap-2 border-t border-slate-100 bg-slate-50/70 px-3 sm:px-4 py-2.5">
 
               <motion.div
                 key={`${box.id}-${snippet.status}`}
@@ -557,18 +554,18 @@ export function CodeShowcase() {
                   delay: revealDelay,
                   duration: 0.3,
                 }}
-                className="flex items-center gap-1.5 font-mono text-[11px] text-slate-500"
+                className="flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] text-slate-500 min-w-0"
               >
-                <span className="relative flex h-1.5 w-1.5">
+                <span className="relative flex h-1.5 w-1.5 shrink-0">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
 
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 </span>
 
-                {snippet.status}
+                <span className="truncate">{snippet.status}</span>
               </motion.div>
 
-              <span className="rounded-md bg-indigo-50 px-2 py-0.5 font-mono text-[10px] font-semibold text-indigo-600">
+              <span className="rounded-md bg-indigo-50 px-2 py-0.5 font-mono text-[10px] font-semibold text-indigo-600 shrink-0">
                 {snippet.lang}
               </span>
             </div>

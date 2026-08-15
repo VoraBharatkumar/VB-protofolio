@@ -41,7 +41,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[90vh] items-center overflow-hidden bg-slate-50 px-6 md:px-12 lg:px-20 pt-16 sm:pt-28 pb-10 sm:pb-20"
+      className="relative flex min-h-[90vh] items-center overflow-hidden bg-slate-50 px-4 sm:px-6 md:px-12 lg:px-20 pt-16 sm:pt-28 pb-10 sm:pb-20"
     >
       {/* Animated floating orbs background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -99,22 +99,22 @@ export function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 grid w-full items-center gap-12 lg:grid-cols-12 lg:gap-16"
+        className="relative z-10 grid w-full items-center gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-16"
       >
-        <div className="lg:col-span-7">
+        <div className="w-full min-w-0 lg:col-span-7">
           <motion.div variants={item}>
             <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-sm animate-pulse">
-              <span className="relative flex  h-2 w-2">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex  h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
-              Available for full-stack roles & freelance — 2026
+              <span className="truncate">Available for full-stack roles & freelance — 2026</span>
             </span>
           </motion.div>
 
           <motion.h1
             variants={item}
-            className="mt-6 text-balance font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight text-slate-900 leading-[1.1]"
+            className="mt-6 text-balance font-display text-3xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight text-slate-900 leading-[1.1]"
           >
             <span className="inline-block">Frontend.</span>{' '}
             <span className="inline-block">Backend.</span>{' '}
@@ -151,17 +151,17 @@ export function Hero() {
             the API, and shipping the UI, type-safe from database to deploy.
           </motion.p>
 
-          <motion.div variants={item} className="mt-6 flex flex-wrap items-center gap-4">
+          <motion.div variants={item} className="mt-6 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
             <a
               href="#projects"
-              className="group inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all duration-200 hover:bg-indigo-700 hover:shadow-indigo-600/35 hover:scale-105"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all duration-200 hover:bg-indigo-700 hover:shadow-indigo-600/35 hover:scale-105 w-full sm:w-auto"
             >
               View Projects
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 hover:scale-105 w-full sm:w-auto"
             >
               Let's Connect
             </a>
@@ -175,7 +175,7 @@ export function Hero() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 cursor-default"
               >
-                <Icon className="h-3.5 w-3.5" />
+                <Icon className="h-3.5 w-3.5 shrink-0" />
                 {label}
               </motion.span>
             ))}
@@ -183,19 +183,19 @@ export function Hero() {
 
           <motion.div
             variants={item}
-            className="mt-10 grid grid-cols-3 gap-6 border-t border-slate-200 pt-6 max-w-md"
+            className="mt-10 grid grid-cols-3 gap-3 sm:gap-6 border-t border-slate-200 pt-6 max-w-full sm:max-w-md"
           >
             {stats.map((s) => (
-              <div key={s.label} className="flex flex-col">
+              <div key={s.label} className="flex flex-col min-w-0">
                 <motion.div
-                  className="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight"
+                  className="font-display text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight whitespace-nowrap"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
                 >
                   {s.value}
                 </motion.div>
-                <div className="mt-1 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">
+                <div className="mt-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 leading-snug">
                   {s.label}
                 </div>
               </div>
@@ -204,11 +204,12 @@ export function Hero() {
         </div>
 
         {/* Signature visual: the live full-stack code showcase */}
-        <div className="lg:col-span-5 lg:-mt-16">
+        <div className="w-full min-w-0 lg:col-span-5 lg:-mt-16">
           <motion.div
             variants={item}
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 300 }}
+            className="w-full"
           >
             <CodeShowcase />
           </motion.div>
